@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sub Loan</title>
+    <!-- Bootstrap CSS -->
+    <link rel="icon" href="{{ url_for('static', filename='icon.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #d9534f;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-custom {
+            background-color: #d9534f;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card col-md-6 mx-auto">
+        <h2 class="text-center mb-4">SUB LOAN</h2>
+        <form action="subLoan" method="post">
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" step="0.1" class="form-control" id="amount" name="expense" placeholder="Enter amount">
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason:</label>
+                <input type="text" class="form-control" id="reason" name="reason" placeholder="Enter reason">
+            </div>
+            <button type="submit" class="btn btn-custom btn-block">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
