@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Expense Tracker</title>
+    <link rel="icon" href="{{ url_for('static', filename='icon.png') }}" type="image/png">
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=YourSelectedFont&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #ecf0f1;
+        padding: 20px;
+        font-family: "roboto", sans-serif;
+      }
+
+      .content-container {
+        text-align: center;
+      }
+
+      .column {
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: background-color 0.3s; 
+      }
+
+      .saving:hover {
+        box-shadow: 0 0 50px rgba(0, 255, 0, 0.8); 
+      }
+      .cash:hover {
+        box-shadow: 0 0 50px rgba(255, 255, 0, 0.8);
+      }
+      .loans:hover {
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+      }
+      .total:hover {
+        box-shadow: 0 0 50px rgba(0, 100, 150, 0.8);
+      }
+
+      .saving {
+        background-color: #5cb85c;
+        color: #fff;
+      }
+
+      .total {
+        background-color: #5c90b8;
+        color: #fff;
+      }
+
+      .cash {
+        background-color: #f0ad4e;
+        color: #fff;
+      }
+
+      .loans {
+        background-color: #d9534f;
+        color: #fff;
+      }
+
+      @media (max-width: 767px) {
+        .column {
+          width: 100%;
+          margin-right: 0;
+        }
+      }
+      .circle {
+        width: 200px;
+        height: 200px;
+        background-color: #ecf0f1;
+        border-radius: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+
+        font-size: 25px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mx-auto content-container">Expense Tracker</h2>
+      <hr />
+      <br />
+      <div class="row">
+        <div class="col-lg-8 col-md-12 mx-auto content-container">
+          <div class="column total"> <br>
+            <h2>Total Amount</h2>
+            <br />
+
+            <div class="circle mx-auto">{{saving[0].amount + cash[0].amount + loan[0].amount}} ETB</div> <br>
+            
+          </div>
+        </div>
+      </div> <br><hr> <br>
+      <div class="row">
+        
+    <div class="col-lg-4 col-md-12 mx-auto content-container">
+        <div class="column saving">
+            <h2>Savings</h2>
+            <br />
+
+            <div class="circle mx-auto">{{saving[0].amount}} ETB</div>
+            <br />
+            <hr />
+            <br />
+
+            <a href="addSaving">
+                <button class="btn btn-dark">ADD SAVING</button>
+            </a>&nbsp;
+            <a href="subSaving">
+                <button class="btn btn-light">SUB SAVING</button>
+            </a>
+
+            <br /><br /><br />
+            <hr />
+            <span style="text-align: left; display: block;">
+                {% for save in saving %}
+                    {{save.transaction}} - {{save.reason}} - {{save.date}}<br><br>
+                {% endfor %}
+            </span>
+        </div>
+    </div>
+
+
+
+        <div class="col-lg-4 col-md-12 mx-auto content-container">
+          <div class="column cash">
+            <h2>Cash</h2>
+            <br />
+            <div class="circle mx-auto">{{cash[0].amount}} ETB</div>
+            <br />
+            <hr />
+            <br />
+            <a href="addCash">
+              <button class="btn btn-dark">ADD CASH</button>
+            </a>&nbsp
+            <a href="subCash">
+              <button class="btn btn-light">SUB CASH</button>
+            </a>
+            <br /><br /><br />
+            <hr />
+            <span style="text-align: left; display: block;">
+                {% for c in cash %}
+                    {{c.transaction}} - {{c.reason}} - {{c.date}}<br><br>
+                {% endfor %}
+            </span>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 mx-auto content-container">
+          <div class="column loans">
+            <h2>Loan</h2>
+            <br />
+            <div class="circle mx-auto">{{loan[0].amount}} ETB</div>
+            <br />
+            <hr />
+            <br />
+
+            <a href="addLoan">
+              <button class="btn btn-dark">ADD LOAN</button>
+            </a>&nbsp
+            <a href="subLoan">
+              <button class="btn btn-light">SUB LOAN</button>
+            </a>
+            <br /><br /><br />
+            <hr />
+            <span style="text-align: left; display: block;">
+                {% for l in loan %}
+                    {{l.transaction}} - {{l.reason}} - {{l.date}}<br><br>
+                {% endfor %}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
